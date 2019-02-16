@@ -24,6 +24,7 @@ const accuWeather = {
 
 const relayBusy = {};
 
+
 async function write(_relay, value) {
     if (relayBusy[_relay]) {
         return Promise.reject('BUSY');
@@ -83,7 +84,19 @@ async function _fetchAccuWeather() {
     }
 }
 
-console.log('SETUP RELAYS');
+async function _readBarometer() {
+	return new Promise((resolve,reject)=> {
+    const spawn = require("child_process").spawn;
+  	const pythonProcess = spawn('python',["./python_scripts/read_barometer.py"]);
+    pythonProcess.stdout.on('data', data => {
+      try {
+        resolve(JSON.parse(data.toString()));
+      } catch(err) {
+        reject(err);
+      }    
+    });
+  });
+}
 
 async function setup() {
     await bluebird.each(RELAYS, relay => {
@@ -124,13 +137,16 @@ app.get('/state', (req, res) => {
     res.send(state);
 });
 
-app.get('/temp', async (req, res) => {
+app.get('/sensors', async (req, res) => {
     try {
-        const inside = await _readSensor();
-        const outside = await _fetchAccuWeather();
+        const tempInside = await _readSensor();
+        const tenoOutside = await _fetchAccuWeather();
+        const { pressure: pressureInside, temp: barometerTemp } = await _readBarometer();
         res.send({
-            inside: inside,
-            outside: outside,
+            inside: tempInside,
+            outside: tenoOutside,
+            pressure: pressureInside,
+            barometerTemp: barometerTemp,
         });
     } catch (err) {
         res.send({error: err});
