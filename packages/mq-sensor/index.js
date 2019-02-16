@@ -18,7 +18,7 @@ class MqSensor extends EventEmitter {
     super();
     this.isReady = false;
 
-    this.port = new SerialPort(comPort, baudRate);
+    this.port = new SerialPort(comPort, { baudRate });
     this.port.pipe(new Delimiter({ delimiter: '\r\n' }));
 
     this.port.on('open', () => {
@@ -32,7 +32,8 @@ class MqSensor extends EventEmitter {
 
     this.port.on('data', (raw) => {
       this.isReady = true;
-      const data = raw.toString();
+      const data = raw.toString()
+        .replace('\n', '');
       if (!data || data.length < 3) return;
 
       const quality = parseInt(data, 10);
