@@ -10,13 +10,15 @@ const errors = {
 /**
  * @module AccuWeather
  * @extends EventEmitter
+ * @property {string} apyKey
+ * @property {number} locationKey
  * @property {boolean} debug
  */
 class AccuWeather extends EventEmitter {
-  constructor(apikey = 'fJIzI57v6u6aKaIloSQCACKQdDTPsQsA', locationKey = 806852, debug = false) {
+  constructor(apyKey = 'fJIzI57v6u6aKaIloSQCACKQdDTPsQsA', locationKey = 806852, debug = false) {
     super();
 
-    this.apikey = apikey;
+    this.apyKey = apyKey;
     this.locationKey = locationKey;
     this.debug = debug;
 
@@ -28,7 +30,7 @@ class AccuWeather extends EventEmitter {
    * @description read data from sensor
    */
   async read() {
-    const response = await fetch(`${URL}?apikey=${this.apikey}&locationKey=${this.locationKey}`)
+    const response = await fetch(`${URL}?apikey=${this.apyKey}&locationKey=${this.locationKey}`)
       .then(res => res.json());
     if (response.Code === 'ServiceUnavailable') {
       this.emit('error', { error: errors.SERVICE_UNAVAILABLE });
