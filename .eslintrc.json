@@ -1,0 +1,82 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "jsdoc"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": [
+      2,
+      "always"
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "no-throw-literal": [
+      "off"
+    ],
+    "no-trailing-spaces": [
+      "off"
+    ],
+    "prefer-const": [
+      "error"
+    ],
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "func-names": [
+      "off"
+    ],
+    "strict": [
+      "off"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "none",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "no-else-return": [
+      "error"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 200
+      }
+    ],
+    "no-console": "off",
+    "jsdoc/check-param-names": "error",
+    "jsdoc/check-tag-names": "error",
+    "jsdoc/check-types": "error",
+    "jsdoc/newline-after-description": [
+      "error",
+      "never"
+    ],
+    "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-description": "warn",
+    "jsdoc/require-description-complete-sentence": "warn",
+    "jsdoc/require-hyphen-before-param-description": "warn",
+    "jsdoc/require-param": "error",
+    "jsdoc/require-param-description": "warn",
+    "jsdoc/require-param-name": "error",
+    "jsdoc/require-param-type": "error",
+    "jsdoc/require-returns": "warn",
+    "jsdoc/require-returns-check": "error",
+    "jsdoc/require-returns-type": "error",
+    "jsdoc/valid-types": "error"
+  }
+}
