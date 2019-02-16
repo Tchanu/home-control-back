@@ -1,0 +1,17 @@
+{
+  "name": "mq-sensor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/parser-delimiter": "^2.0.2",
+    "@serialport/parser-readline": "^2.0.2",
+    "serialport": "^7.1.4"
+  }
+}
