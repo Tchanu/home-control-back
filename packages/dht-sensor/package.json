@@ -1,0 +1,14 @@
+{
+  "name": "dht-sensor",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node-dht-sensor": "0.0.34"
+  },
+  "author": "",
+  "license": "ISC"
+}

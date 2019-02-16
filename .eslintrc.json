@@ -58,6 +58,7 @@
         "code": 200
       }
     ],
+    "no-use-before-define": "off",
     "no-console": "off",
     "jsdoc/check-param-names": "error",
     "jsdoc/check-tag-names": "error",
