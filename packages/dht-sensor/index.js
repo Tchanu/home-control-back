@@ -20,20 +20,25 @@ class DhtSensor extends EventEmitter {
    * @description read data from sensor
    */
   read() {
-    sensor.read(22, this.GPIO, (err, temp, humidity) => {
-      if (err) {
-        if (this.debug) console.trace(err);
-        this.emit('error', err);
-        return;
-      }
+    try {
+      sensor.read(22, this.GPIO, (err, temp, humidity) => {
+        if (err) {
+          if (this.debug) console.trace(err);
+          this.emit('error', err);
+          return;
+        }
 
-      if (this.debug) console.info(temp, humidity);
+        if (this.debug) console.info(temp, humidity);
 
-      this.emit('data', {
-        temp,
-        humidity,
+        this.emit('data', {
+          temp,
+          humidity,
+        });
       });
-    });
+    } catch (err) {
+      if (this.debug) console.trace(err);
+      this.emit('error', err);
+    }
   }
 }
 
