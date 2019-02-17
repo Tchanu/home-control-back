@@ -10,7 +10,7 @@ const BAROMETER_BRIDGE_PATH = path.resolve(__dirname, 'read_barometer.py');
  * @property {boolean} debug
  */
 class BmpSensor extends EventEmitter {
-  constructor(interval = 5000) {
+  constructor(interval = 300000) {
     super();
 
     this.read();

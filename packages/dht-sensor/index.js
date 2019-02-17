@@ -8,7 +8,7 @@ const sensor = require('node-dht-sensor');
  * @property {boolean} debug
  */
 class DhtSensor extends EventEmitter {
-  constructor(gpio = 4, interval = 5000) {
+  constructor(gpio = 4, interval = 300000) {
     super();
     this.GPIO = gpio;
 

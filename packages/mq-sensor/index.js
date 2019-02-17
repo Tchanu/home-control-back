@@ -27,7 +27,7 @@ class MqSensor extends EventEmitter {
 
       // start reading data
       this.read();
-      setInterval(() => this.read(), 5000);
+      setInterval(() => this.read(), 300000);
     });
 
     this.port.on('data', (raw) => {
